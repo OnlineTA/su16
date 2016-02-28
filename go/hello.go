@@ -11,7 +11,7 @@ type Server struct {
 }
 
 func (s Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-    body := "Hello World\n"
+    body := "Hello World!\n"
     // Try to keep the same amount of headers
     w.Header().Set("Server", "gophr")
     w.Header().Set("Connection", "keep-alive")
@@ -23,10 +23,8 @@ func (s Server) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 func main() {
   server := Server{}
 
-  go func() {
-    http.Handle("/", server)
-      if err := http.ListenAndServe(":8080", nil); err != nil {
-        log.Fatal(err)
-      }
-  }()
+  http.Handle("/", server)
+  if err := http.ListenAndServe(":8081", nil); err != nil {
+    log.Fatal(err)
+  }
 }
