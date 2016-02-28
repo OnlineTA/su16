@@ -12,7 +12,7 @@ vboxmanage unregistervm "${VERNAME}" --delete
 
 vboxmanage import "${VERNAME}.ova"
 
-function sfmount {
+function sfmount () {
   vboxmanage sharedfolder add "${VERNAME}" \
     --name "$1" --hostpath "$PWD/$1" --automount
 }
