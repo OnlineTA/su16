@@ -5,10 +5,10 @@ set -x
 
 VERNAME=su16vm-v1.0
 
-curl -z "${VERNAME}" -o "${VERNAME}" \
+curl -z "${VERNAME}.ova" -o "${VERNAME}.ova" \
   "http://napoleon.hiperfit.dk/~oleks/${VERNAME}.ova"
 
-vboxmanage unregistervm "${VERNAME}" --delete
+vboxmanage unregistervm "${VERNAME}" --delete || true
 
 vboxmanage import "${VERNAME}.ova"
 
